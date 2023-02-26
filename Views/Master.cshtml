@@ -1,0 +1,29 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>@Model.Root().Value("tabTitle")</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    @await Html.PartialAsync("Styles")
+</head>
+
+<body>
+    <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+    @await Html.PartialAsync("Header")
+    <main id="main">
+    @RenderBody()
+    </main>
+    @await Html.PartialAsync("Scripts")
+</body>
+
+</html>

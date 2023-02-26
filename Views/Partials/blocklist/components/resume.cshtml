@@ -1,0 +1,56 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels
+@using Umbraco.Cms.Core.Models
+<section id="resume" class="resume">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Resume</h2>
+        </div>
+
+          
+          <div class="row">
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="resume-title">Professional Experience</h3>
+            @if (Model.Content.HasValue("experienceList"))
+            {
+                IEnumerable<Umbraco.Cms.Core.Models.Blocks.BlockListItem> items = (IEnumerable<Umbraco.Cms.Core.Models.Blocks.BlockListItem>)Model.Content.Value("experienceList");
+                if (items.Count() > 0)
+                {
+                    int count = 0;
+                    foreach (Umbraco.Cms.Core.Models.Blocks.BlockListItem item in items)
+                    {
+                        <div class="resume-item">
+                          <h4>@item.Content.Value("title")</h4>
+                          <h5>@item.Content.Value("duration")</h5>
+                          <p><em>@item.Content.Value("location")</em></p>
+                          <p>@item.Content.Value("description")</p>
+                        </div>
+                    }
+                }
+            }
+          </div>
+          <div class="col-lg-6" data-aos="fade-up">
+            <h3 class="resume-title">Education</h3>
+            @if (Model.Content.HasValue("educationList"))
+            {
+                IEnumerable<Umbraco.Cms.Core.Models.Blocks.BlockListItem> items = (IEnumerable<Umbraco.Cms.Core.Models.Blocks.BlockListItem>)Model.Content.Value("educationList");
+                if (items.Count() > 0)
+                {
+                    int count = 0;
+                    foreach (Umbraco.Cms.Core.Models.Blocks.BlockListItem item in items)
+                    {
+                        <div class="resume-item">
+                          <h4>@item.Content.Value("title")</h4>
+                          <h5>@item.Content.Value("duration")</h5>
+                          <p><em>@item.Content.Value("location")</em></p>
+                          <p>@item.Content.Value("description")</p>
+                        </div>
+                    }
+                }
+            }
+          </div>
+        </div>
+
+      </div>
+    </section>

@@ -1,0 +1,14 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models.Blocks;
+@{
+	Layout = "Master.cshtml";
+}
+@{
+    IEnumerable<BlockListItem> components = (IEnumerable<BlockListItem>)Model.Value("sections");
+    foreach (var component in components)
+    {
+        await Html.RenderPartialAsync("/Views/Partials/blocklist/Components/" + component.Content.ContentType.Alias + ".cshtml", (BlockListItem)component);
+    }
+}
